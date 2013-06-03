@@ -4,7 +4,7 @@
   <artifactId>sdx_nitro</artifactId>
   <packaging>jar</packaging>
   <name>NetScaler SDX NITRO API client</name>
-  <version>10.0</version>
+  <version>10.1-SNAPSHOT</version>
   <description>The Citrix® NetScaler® SDX NITRO client for Java allows you to configure and monitor the NetScaler SDX appliance programmatically in Java based applications. Source code taken from Build 74 of NetScaler release 10.0</description>
   <url>http://www.citrix.com/netscaler</url>
   <parent>
