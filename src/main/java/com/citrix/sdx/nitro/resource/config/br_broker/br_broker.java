@@ -40,17 +40,26 @@ class br_broker_responses extends base_response
 
 public class br_broker extends vm_device
 {
+	private Double non_accelerated_traffic_prev;
 	private Double lan_out;
 	private Double br_broker_memory_usage;
-	private String version;
-	private Double system_load;
+	private Double data_reduction;
+	private Double total_lan;
 	private Double active_connections;
 	private Double wan_out;
-	private String ip_list;
+	private Double non_accelerated_traffic;
 	private Double wan_in;
+	private Double br_broker_cpu_usage;
+	private Double wan_out_prev;
+	private Double prev_poll_time;
+	private Double system_load;
+	private Double lan_in_prev;
+	private Double lan_out_prev;
+	private Double wan_in_prev;
+	private String ip_list;
+	private Double total_wan;
 	private Double lan_in;
 	private String upsince;
-	private Double br_broker_cpu_usage;
 	private Long __count;
 
 	protected String get_object_type()
@@ -64,6 +73,17 @@ public class br_broker extends vm_device
 	protected String get_object_id()
 	{
 		return super.get_object_id();
+	}
+
+
+	/**
+	 * <pre>
+	 * Previous Non Accelerated Traffic of Repeater in Mbps
+	 * </pre>
+	 */
+	public Double get_non_accelerated_traffic_prev()
+	{
+		return this.non_accelerated_traffic_prev;
 	}
 
 
@@ -91,23 +111,23 @@ public class br_broker extends vm_device
 
 	/**
 	 * <pre>
-	 * Version of Unified Repeater Instance
+	 * Data Reduction (%)
 	 * </pre>
 	 */
-	public String get_version()
+	public Double get_data_reduction()
 	{
-		return this.version;
+		return this.data_reduction;
 	}
 
 
 	/**
 	 * <pre>
-	 * System Load (%) on Repeater
+	 * Total LAN traffic in Mbps
 	 * </pre>
 	 */
-	public Double get_system_load()
+	public Double get_total_lan()
 	{
-		return this.system_load;
+		return this.total_lan;
 	}
 
 
@@ -130,6 +150,105 @@ public class br_broker extends vm_device
 	public Double get_wan_out()
 	{
 		return this.wan_out;
+	}
+
+
+	/**
+	 * <pre>
+	 * Non Accelerated Traffic of Repeater in Mbps
+	 * </pre>
+	 */
+	public Double get_non_accelerated_traffic()
+	{
+		return this.non_accelerated_traffic;
+	}
+
+
+	/**
+	 * <pre>
+	 * WAN In of Repeater in Mbps
+	 * </pre>
+	 */
+	public Double get_wan_in()
+	{
+		return this.wan_in;
+	}
+
+
+	/**
+	 * <pre>
+	 * CPU Usage (%) of Unified Repeater Instance
+	 * </pre>
+	 */
+	public Double get_br_broker_cpu_usage()
+	{
+		return this.br_broker_cpu_usage;
+	}
+
+
+	/**
+	 * <pre>
+	 * WAN out of Repeater Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_wan_out_prev()
+	{
+		return this.wan_out_prev;
+	}
+
+
+	/**
+	 * <pre>
+	 * Previous time
+	 * </pre>
+	 */
+	public Double get_prev_poll_time()
+	{
+		return this.prev_poll_time;
+	}
+
+
+	/**
+	 * <pre>
+	 * System Load (%) on Repeater
+	 * </pre>
+	 */
+	public Double get_system_load()
+	{
+		return this.system_load;
+	}
+
+
+	/**
+	 * <pre>
+	 * Lan In of Repeater Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_lan_in_prev()
+	{
+		return this.lan_in_prev;
+	}
+
+
+	/**
+	 * <pre>
+	 * Lan out of Repeater Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_lan_out_prev()
+	{
+		return this.lan_out_prev;
+	}
+
+
+	/**
+	 * <pre>
+	 * WAN In of Repeater Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_wan_in_prev()
+	{
+		return this.wan_in_prev;
 	}
 
 	/**
@@ -155,12 +274,12 @@ public class br_broker extends vm_device
 
 	/**
 	 * <pre>
-	 * WAN In of Repeater in Mbps
+	 * Total WAN traffic in Mbps
 	 * </pre>
 	 */
-	public Double get_wan_in()
+	public Double get_total_wan()
 	{
-		return this.wan_in;
+		return this.total_wan;
 	}
 
 
@@ -183,17 +302,6 @@ public class br_broker extends vm_device
 	public String get_upsince()
 	{
 		return this.upsince;
-	}
-
-
-	/**
-	 * <pre>
-	 * CPU Usage (%) of Unified Repeater Instance
-	 * </pre>
-	 */
-	public Double get_br_broker_cpu_usage()
-	{
-		return this.br_broker_cpu_usage;
 	}
 
 
@@ -616,11 +724,6 @@ public class br_broker extends vm_device
 		upsince_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		upsince_validator.validate(operationType, upsince, "\"upsince\"");
 		
-		MPSString version_validator = new MPSString();
-		version_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 256);
-		version_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
-		version_validator.validate(operationType, version, "\"version\"");
-		
 		MPSString ip_list_validator = new MPSString();
 		ip_list_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 1024);
 		ip_list_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
@@ -643,6 +746,36 @@ public class br_broker extends vm_device
 		
 		MPSDouble lan_out_validator = new MPSDouble();
 		lan_out_validator.validate(operationType, lan_out, "\"lan_out\"");
+		
+		MPSDouble wan_out_prev_validator = new MPSDouble();
+		wan_out_prev_validator.validate(operationType, wan_out_prev, "\"wan_out_prev\"");
+		
+		MPSDouble lan_out_prev_validator = new MPSDouble();
+		lan_out_prev_validator.validate(operationType, lan_out_prev, "\"lan_out_prev\"");
+		
+		MPSDouble wan_in_prev_validator = new MPSDouble();
+		wan_in_prev_validator.validate(operationType, wan_in_prev, "\"wan_in_prev\"");
+		
+		MPSDouble lan_in_prev_validator = new MPSDouble();
+		lan_in_prev_validator.validate(operationType, lan_in_prev, "\"lan_in_prev\"");
+		
+		MPSDouble prev_poll_time_validator = new MPSDouble();
+		prev_poll_time_validator.validate(operationType, prev_poll_time, "\"prev_poll_time\"");
+		
+		MPSDouble non_accelerated_traffic_validator = new MPSDouble();
+		non_accelerated_traffic_validator.validate(operationType, non_accelerated_traffic, "\"non_accelerated_traffic\"");
+		
+		MPSDouble non_accelerated_traffic_prev_validator = new MPSDouble();
+		non_accelerated_traffic_prev_validator.validate(operationType, non_accelerated_traffic_prev, "\"non_accelerated_traffic_prev\"");
+		
+		MPSDouble total_wan_validator = new MPSDouble();
+		total_wan_validator.validate(operationType, total_wan, "\"total_wan\"");
+		
+		MPSDouble total_lan_validator = new MPSDouble();
+		total_lan_validator.validate(operationType, total_lan, "\"total_lan\"");
+		
+		MPSDouble data_reduction_validator = new MPSDouble();
+		data_reduction_validator.validate(operationType, data_reduction, "\"data_reduction\"");
 		
 	}
 }

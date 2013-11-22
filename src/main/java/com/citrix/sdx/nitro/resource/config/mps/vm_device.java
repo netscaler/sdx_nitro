@@ -41,37 +41,46 @@ class vm_device_responses extends base_response
 
 public class vm_device extends managed_device
 {
-	private Double domid;
-	private String template_name;
-	private String cpu_core_pe;
-	private String vm_description;
 	private String image_name;
 	private network_interface[] network_interfaces;
 	private String vm_state;
 	private String uuid;
-	private String mac_eth0;
 	private Double vm_memory_total;
-	private Double vm_rx;
 	private String cpu_core_mgmt;
 	private String ssl_virtual_functions;
-	private String disk_allocation;
+	private Integer sdxtools_http_port;
 	private String uptime;
-	private Double vm_tx;
+	private Integer vlan_id_0_1;
 	private Boolean provision_with_xva;
-	private Integer number_of_cores;
 	private Double disk_space;
 	private String virtual_functions;
-	private Double vm_memory_free;
-	private Double vm_memory_usage;
+	private Boolean la_mgmt;
+	private String assigned_cpu_socket;
+	private Integer vlan_id_0_2;
 	private Integer number_of_ssl_cores;
 	private Double throughput;
+	private String sdxtools_public_key;
+	private String template_name;
+	private Double domid;
+	private String cpu_core_pe;
+	private String vm_description;
+	private String mac_eth0;
+	private Double vm_rx;
+	private String disk_allocation;
+	private String preferred_cpu_socket;
+	private Double vm_tx;
+	private Integer number_of_cores;
+	private Boolean has_sdxtools;
+	private String domain_name;
+	private Double vm_memory_free;
+	private String sdxtools_version;
+	private Double vm_memory_usage;
 	private Double vm_cpu_usage;
 	private Integer vlan_1_2;
 	private String[] vrid_list_ipv4_1_2;
 	private Integer vlan_1_7;
 	private String[] vrid_list_ipv6_1_2;
 	private String[] vrid_list_ipv4_1_4;
-	private String act_id;
 	private String[] vrid_list_ipv6_10_6;
 	private Boolean if_10_4;
 	private Integer vlan_10_5;
@@ -165,59 +174,6 @@ public class vm_device extends managed_device
 		return super.get_object_id();
 	}
 
-
-	/**
-	 * <pre>
-	 * DOM Id assigned to VM Instance
-	 * </pre>
-	 */
-	public Double get_domid()
-	{
-		return this.domid;
-	}
-
-	/**
-	 * <pre>
-	 * Template Name, This parameter is used while provisioning VM Instance with template, template_name is given priority if provided along with image_name
-	 * </pre>
-	 */
-	public void set_template_name(String template_name)
-	{
-		this.template_name = template_name;
-	}
-
-	/**
-	 * <pre>
-	 * Template Name, This parameter is used while provisioning VM Instance with template, template_name is given priority if provided along with image_name
-	 * </pre>
-	 */
-	public String get_template_name()
-	{
-		return this.template_name;
-	}
-
-
-	/**
-	 * <pre>
-	 * Packet Engine cores assigned to VM Instance
-	 * </pre>
-	 */
-	public String get_cpu_core_pe()
-	{
-		return this.cpu_core_pe;
-	}
-
-
-	/**
-	 * <pre>
-	 * Description of vm_device
-	 * </pre>
-	 */
-	public String get_vm_description()
-	{
-		return this.vm_description;
-	}
-
 	/**
 	 * <pre>
 	 * Image Name, This parameter is used while provisioning VM Instance with XVA image, template_name is given priority if provided along with image_name
@@ -280,17 +236,6 @@ public class vm_device extends managed_device
 		return this.uuid;
 	}
 
-
-	/**
-	 * <pre>
-	 * MAC Address of eth0 on VM Instance
-	 * </pre>
-	 */
-	public String get_mac_eth0()
-	{
-		return this.mac_eth0;
-	}
-
 	/**
 	 * <pre>
 	 * Total Memory of VM Instance in MB
@@ -309,17 +254,6 @@ public class vm_device extends managed_device
 	public Double get_vm_memory_total()
 	{
 		return this.vm_memory_total;
-	}
-
-
-	/**
-	 * <pre>
-	 * In Throughput of VM Instance in Mbps
-	 * </pre>
-	 */
-	public Double get_vm_rx()
-	{
-		return this.vm_rx;
 	}
 
 
@@ -347,12 +281,12 @@ public class vm_device extends managed_device
 
 	/**
 	 * <pre>
-	 * Disk allocation for VM Instance
+	 * Http Port number to communicate to SDXTools
 	 * </pre>
 	 */
-	public String get_disk_allocation()
+	public Integer get_sdxtools_http_port()
 	{
-		return this.disk_allocation;
+		return this.sdxtools_http_port;
 	}
 
 
@@ -366,15 +300,24 @@ public class vm_device extends managed_device
 		return this.uptime;
 	}
 
+	/**
+	 * <pre>
+	 * VLAN id for the management interface 0/1
+	 * </pre>
+	 */
+	public void set_vlan_id_0_1(Integer vlan_id_0_1)
+	{
+		this.vlan_id_0_1 = vlan_id_0_1;
+	}
 
 	/**
 	 * <pre>
-	 * Out Throughput of VM Instance in Mbps
+	 * VLAN id for the management interface 0/1
 	 * </pre>
 	 */
-	public Double get_vm_tx()
+	public Integer get_vlan_id_0_1()
 	{
-		return this.vm_tx;
+		return this.vlan_id_0_1;
 	}
 
 	/**
@@ -395,26 +338,6 @@ public class vm_device extends managed_device
 	public Boolean get_provision_with_xva()
 	{
 		return this.provision_with_xva;
-	}
-
-	/**
-	 * <pre>
-	 * Number of cores that are assigned to VM Instance
-	 * </pre>
-	 */
-	public void set_number_of_cores(Integer number_of_cores)
-	{
-		this.number_of_cores = number_of_cores;
-	}
-
-	/**
-	 * <pre>
-	 * Number of cores that are assigned to VM Instance
-	 * </pre>
-	 */
-	public Integer get_number_of_cores()
-	{
-		return this.number_of_cores;
 	}
 
 
@@ -439,26 +362,55 @@ public class vm_device extends managed_device
 		return this.virtual_functions;
 	}
 
+	/**
+	 * <pre>
+	 * Bond consisting of management ports on VM Instance
+	 * </pre>
+	 */
+	public void set_la_mgmt(Boolean la_mgmt)
+	{
+		this.la_mgmt = la_mgmt;
+	}
 
 	/**
 	 * <pre>
-	 * Free Memory (MB) available in VM Instance
+	 * Bond consisting of management ports on VM Instance
 	 * </pre>
 	 */
-	public Double get_vm_memory_free()
+	public Boolean get_la_mgmt()
 	{
-		return this.vm_memory_free;
+		return this.la_mgmt;
 	}
 
 
 	/**
 	 * <pre>
-	 * Memory Usage (%) of VM Instance
+	 * Assigned CPU Socket
 	 * </pre>
 	 */
-	public Double get_vm_memory_usage()
+	public String get_assigned_cpu_socket()
 	{
-		return this.vm_memory_usage;
+		return this.assigned_cpu_socket;
+	}
+
+	/**
+	 * <pre>
+	 * VLAN id for the management interface 0/2
+	 * </pre>
+	 */
+	public void set_vlan_id_0_2(Integer vlan_id_0_2)
+	{
+		this.vlan_id_0_2 = vlan_id_0_2;
+	}
+
+	/**
+	 * <pre>
+	 * VLAN id for the management interface 0/2
+	 * </pre>
+	 */
+	public Integer get_vlan_id_0_2()
+	{
+		return this.vlan_id_0_2;
 	}
 
 	/**
@@ -499,6 +451,209 @@ public class vm_device extends managed_device
 	public Double get_throughput()
 	{
 		return this.throughput;
+	}
+
+
+	/**
+	 * <pre>
+	 * SDXTools HTTPS Public Key
+	 * </pre>
+	 */
+	public String get_sdxtools_public_key()
+	{
+		return this.sdxtools_public_key;
+	}
+
+	/**
+	 * <pre>
+	 * Template Name, This parameter is used while provisioning VM Instance with template, template_name is given priority if provided along with image_name
+	 * </pre>
+	 */
+	public void set_template_name(String template_name)
+	{
+		this.template_name = template_name;
+	}
+
+	/**
+	 * <pre>
+	 * Template Name, This parameter is used while provisioning VM Instance with template, template_name is given priority if provided along with image_name
+	 * </pre>
+	 */
+	public String get_template_name()
+	{
+		return this.template_name;
+	}
+
+
+	/**
+	 * <pre>
+	 * DOM Id assigned to VM Instance
+	 * </pre>
+	 */
+	public Double get_domid()
+	{
+		return this.domid;
+	}
+
+
+	/**
+	 * <pre>
+	 * Packet Engine cores assigned to VM Instance
+	 * </pre>
+	 */
+	public String get_cpu_core_pe()
+	{
+		return this.cpu_core_pe;
+	}
+
+
+	/**
+	 * <pre>
+	 * Description of vm_device
+	 * </pre>
+	 */
+	public String get_vm_description()
+	{
+		return this.vm_description;
+	}
+
+
+	/**
+	 * <pre>
+	 * MAC Address of eth0 on VM Instance
+	 * </pre>
+	 */
+	public String get_mac_eth0()
+	{
+		return this.mac_eth0;
+	}
+
+
+	/**
+	 * <pre>
+	 * In Throughput of VM Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_vm_rx()
+	{
+		return this.vm_rx;
+	}
+
+
+	/**
+	 * <pre>
+	 * Disk allocation for VM Instance
+	 * </pre>
+	 */
+	public String get_disk_allocation()
+	{
+		return this.disk_allocation;
+	}
+
+
+	/**
+	 * <pre>
+	 * Preferred CPU Socket
+	 * </pre>
+	 */
+	public String get_preferred_cpu_socket()
+	{
+		return this.preferred_cpu_socket;
+	}
+
+
+	/**
+	 * <pre>
+	 * Out Throughput of VM Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_vm_tx()
+	{
+		return this.vm_tx;
+	}
+
+	/**
+	 * <pre>
+	 * Number of cores that are assigned to VM Instance
+	 * </pre>
+	 */
+	public void set_number_of_cores(Integer number_of_cores)
+	{
+		this.number_of_cores = number_of_cores;
+	}
+
+	/**
+	 * <pre>
+	 * Number of cores that are assigned to VM Instance
+	 * </pre>
+	 */
+	public Integer get_number_of_cores()
+	{
+		return this.number_of_cores;
+	}
+
+
+	/**
+	 * <pre>
+	 * True if SDX Tools are installed on this VM
+	 * </pre>
+	 */
+	public Boolean get_has_sdxtools()
+	{
+		return this.has_sdxtools;
+	}
+
+	/**
+	 * <pre>
+	 * Domain name of VM Device
+	 * </pre>
+	 */
+	public void set_domain_name(String domain_name)
+	{
+		this.domain_name = domain_name;
+	}
+
+	/**
+	 * <pre>
+	 * Domain name of VM Device
+	 * </pre>
+	 */
+	public String get_domain_name()
+	{
+		return this.domain_name;
+	}
+
+
+	/**
+	 * <pre>
+	 * Free Memory (MB) available in VM Instance
+	 * </pre>
+	 */
+	public Double get_vm_memory_free()
+	{
+		return this.vm_memory_free;
+	}
+
+
+	/**
+	 * <pre>
+	 * SDXTools version running on VM Instance
+	 * </pre>
+	 */
+	public String get_sdxtools_version()
+	{
+		return this.sdxtools_version;
+	}
+
+
+	/**
+	 * <pre>
+	 * Memory Usage (%) of VM Instance
+	 * </pre>
+	 */
+	public Double get_vm_memory_usage()
+	{
+		return this.vm_memory_usage;
 	}
 
 
@@ -620,17 +775,6 @@ public class vm_device extends managed_device
 	public String[] get_vrid_list_ipv4_1_4()
 	{
 		return this.vrid_list_ipv4_1_4;
-	}
-
-
-	/**
-	 * <pre>
-	 * Activity Id
-	 * </pre>
-	 */
-	public String get_act_id()
-	{
-		return this.act_id;
 	}
 
 	/**
@@ -2536,7 +2680,7 @@ public class vm_device extends managed_device
 		vm_cpu_usage_validator.validate(operationType, vm_cpu_usage, "\"vm_cpu_usage\"");
 		
 		MPSDoubleLong vm_memory_total_validator = new MPSDoubleLong();
-		vm_memory_total_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 2048);
+		vm_memory_total_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 1024);
 		vm_memory_total_validator.validate(operationType, vm_memory_total, "\"vm_memory_total\"");
 		
 		MPSDoubleLong vm_memory_free_validator = new MPSDoubleLong();
@@ -2558,7 +2702,6 @@ public class vm_device extends managed_device
 		
 		MPSInt number_of_ssl_cores_validator = new MPSInt();
 		number_of_ssl_cores_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 0);
-		number_of_ssl_cores_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 16);
 		number_of_ssl_cores_validator.validate(operationType, number_of_ssl_cores, "\"number_of_ssl_cores\"");
 		
 		MPSString cpu_core_mgmt_validator = new MPSString();
@@ -2586,7 +2729,6 @@ public class vm_device extends managed_device
 		
 		MPSDoubleLong throughput_validator = new MPSDoubleLong();
 		throughput_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 0);
-		throughput_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 35000);
 		throughput_validator.validate(operationType, throughput, "\"throughput\"");
 		
 		MPSDoubleLong disk_space_validator = new MPSDoubleLong();
@@ -2598,7 +2740,6 @@ public class vm_device extends managed_device
 		disk_allocation_validator.validate(operationType, disk_allocation, "\"disk_allocation\"");
 		
 		MPSInt number_of_cores_validator = new MPSInt();
-		number_of_cores_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 5);
 		number_of_cores_validator.validate(operationType, number_of_cores, "\"number_of_cores\"");
 		
 		MPSBoolean provision_with_xva_validator = new MPSBoolean();
@@ -2611,6 +2752,49 @@ public class vm_device extends managed_device
 				network_interfaces[i].validate(operationType);
 			}
 		}
+		
+		MPSBoolean has_sdxtools_validator = new MPSBoolean();
+		has_sdxtools_validator.validate(operationType, has_sdxtools, "\"has_sdxtools\"");
+		
+		MPSInt sdxtools_http_port_validator = new MPSInt();
+		sdxtools_http_port_validator.validate(operationType, sdxtools_http_port, "\"sdxtools_http_port\"");
+		
+		MPSString sdxtools_public_key_validator = new MPSString();
+		sdxtools_public_key_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 4096);
+		sdxtools_public_key_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		sdxtools_public_key_validator.validate(operationType, sdxtools_public_key, "\"sdxtools_public_key\"");
+		
+		MPSString domain_name_validator = new MPSString();
+		domain_name_validator.setConstraintCharSetRegEx(MPSConstants.GENERIC_CONSTRAINT,"[a-zA-Z0-9_#.:@=-]+");
+		domain_name_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
+		domain_name_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		domain_name_validator.validate(operationType, domain_name, "\"domain_name\"");
+		
+		MPSBoolean la_mgmt_validator = new MPSBoolean();
+		la_mgmt_validator.validate(operationType, la_mgmt, "\"la_mgmt\"");
+		
+		MPSString sdxtools_version_validator = new MPSString();
+		sdxtools_version_validator.validate(operationType, sdxtools_version, "\"sdxtools_version\"");
+		
+		MPSInt vlan_id_0_1_validator = new MPSInt();
+		vlan_id_0_1_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 0);
+		vlan_id_0_1_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 4095);
+		vlan_id_0_1_validator.validate(operationType, vlan_id_0_1, "\"vlan_id_0_1\"");
+		
+		MPSInt vlan_id_0_2_validator = new MPSInt();
+		vlan_id_0_2_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 0);
+		vlan_id_0_2_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 4095);
+		vlan_id_0_2_validator.validate(operationType, vlan_id_0_2, "\"vlan_id_0_2\"");
+		
+		MPSString preferred_cpu_socket_validator = new MPSString();
+		preferred_cpu_socket_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 24);
+		preferred_cpu_socket_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		preferred_cpu_socket_validator.validate(operationType, preferred_cpu_socket, "\"preferred_cpu_socket\"");
+		
+		MPSString assigned_cpu_socket_validator = new MPSString();
+		assigned_cpu_socket_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 24);
+		assigned_cpu_socket_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		assigned_cpu_socket_validator.validate(operationType, assigned_cpu_socket, "\"assigned_cpu_socket\"");
 		
 		MPSInt vlan_10_1_validator = new MPSInt();
 		vlan_10_1_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 0);
@@ -3081,9 +3265,6 @@ public class vm_device extends managed_device
 		
 		MPSBoolean reboot_vm_on_cpu_change_validator = new MPSBoolean();
 		reboot_vm_on_cpu_change_validator.validate(operationType, reboot_vm_on_cpu_change, "\"reboot_vm_on_cpu_change\"");
-		
-		MPSString act_id_validator = new MPSString();
-		act_id_validator.validate(operationType, act_id, "\"act_id\"");
 		
 		MPSBoolean sync_operation_validator = new MPSBoolean();
 		sync_operation_validator.validate(operationType, sync_operation, "\"sync_operation\"");

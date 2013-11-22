@@ -52,7 +52,7 @@ public class xen_health_resource_hw extends xen_health_resource
 	 */
 	protected String get_object_id()
 	{
-		return null;
+		return super.get_object_id();
 	}
 
 

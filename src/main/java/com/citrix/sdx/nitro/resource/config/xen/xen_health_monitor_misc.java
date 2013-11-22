@@ -52,7 +52,7 @@ public class xen_health_monitor_misc extends xen_health_monitor
 	 */
 	protected String get_object_id()
 	{
-		return null;
+		return super.get_object_id();
 	}
 
 

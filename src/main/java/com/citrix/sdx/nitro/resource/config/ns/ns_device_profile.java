@@ -53,7 +53,7 @@ public class ns_device_profile extends device_profile
 	 */
 	protected String get_object_id()
 	{
-		return null;
+		return super.get_object_id();
 	}
 
 

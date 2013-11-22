@@ -40,6 +40,7 @@ class ns_upgrade_responses extends base_response
 
 public class ns_upgrade extends base_resource
 {
+	private String act_id;
 	private String image_name;
 	private String doc_file;
 	private String[] ns_ip_address_arr;
@@ -56,6 +57,17 @@ public class ns_upgrade extends base_resource
 	protected String get_object_id()
 	{
 		return null;
+	}
+
+
+	/**
+	 * <pre>
+	 * Activity Id
+	 * </pre>
+	 */
+	public String get_act_id()
+	{
+		return this.act_id;
 	}
 
 	/**
@@ -224,6 +236,9 @@ public class ns_upgrade extends base_resource
 				ns_ip_address_arr_validator.validate(operationType, ns_ip_address_arr[i], "ns_ip_address_arr["+i+"]");
 			}
 		}
+		
+		MPSString act_id_validator = new MPSString();
+		act_id_validator.validate(operationType, act_id, "\"act_id\"");
 		
 	}
 }

@@ -41,32 +41,40 @@ class ns_responses extends base_response
 
 public class ns extends vm_device
 {
-	private Double ns_rx;
 	private Boolean if_0_2;
-	private String node_state;
-	private String plugin_ip_address;
+	private Boolean if_0_3;
+	private String backplane;
+	private Integer clusterid;
+	private Integer nodeid;
 	private Boolean if_0_1;
-	private Integer vlan_type;
+	private String state;
 	private String ns_ip_address;
-	private Integer nsvlan_id;
-	private String cmd_policy;
 	private String password;
-	private Boolean nsvlan_tagged;
-	private Double ns_memory_usage;
 	private String ha_master_state;
-	private Double ns_mgmt_cpu_usage;
 	private String upsince_persisted;
 	private Double http_req;
-	private Double pps;
 	private String ha_sync;
-	private Double ns_tx;
-	private String license;
 	private String ha_ip_address;
 	private String username;
-	private String config_progress_status;
 	private Double ns_cpu_usage;
-	private Integer number_of_ssl_cores_up;
 	private String upsince;
+	private Double ns_rx;
+	private String node_state;
+	private String plugin_ip_address;
+	private Integer vlan_type;
+	private Integer nsvlan_id;
+	private String cmd_policy;
+	private Boolean iscco;
+	private Double ns_memory_usage;
+	private Boolean nsvlan_tagged;
+	private String clip;
+	private Double ns_mgmt_cpu_usage;
+	private Double pps;
+	private String health;
+	private String license;
+	private Double ns_tx;
+	private String config_progress_status;
+	private Integer number_of_ssl_cores_up;
 	private String[] nsvlan_interfaces;
 	private Long __count;
 
@@ -81,17 +89,6 @@ public class ns extends vm_device
 	protected String get_object_id()
 	{
 		return super.get_object_id();
-	}
-
-
-	/**
-	 * <pre>
-	 * In Throughput of NetScaler Instance in Mbps
-	 * </pre>
-	 */
-	public Double get_ns_rx()
-	{
-		return this.ns_rx;
 	}
 
 	/**
@@ -112,6 +109,265 @@ public class ns extends vm_device
 	public Boolean get_if_0_2()
 	{
 		return this.if_0_2;
+	}
+
+
+	/**
+	 * <pre>
+	 * Network 0/3 on VM Instance
+	 * </pre>
+	 */
+	public Boolean get_if_0_3()
+	{
+		return this.if_0_3;
+	}
+
+	/**
+	 * <pre>
+	 * Backplane Interface
+	 * </pre>
+	 */
+	public void set_backplane(String backplane)
+	{
+		this.backplane = backplane;
+	}
+
+	/**
+	 * <pre>
+	 * Backplane Interface
+	 * </pre>
+	 */
+	public String get_backplane()
+	{
+		return this.backplane;
+	}
+
+	/**
+	 * <pre>
+	 * Cluster Id
+	 * </pre>
+	 */
+	public void set_clusterid(Integer clusterid)
+	{
+		this.clusterid = clusterid;
+	}
+
+	/**
+	 * <pre>
+	 * Cluster Id
+	 * </pre>
+	 */
+	public Integer get_clusterid()
+	{
+		return this.clusterid;
+	}
+
+	/**
+	 * <pre>
+	 * Node Id
+	 * </pre>
+	 */
+	public void set_nodeid(Integer nodeid)
+	{
+		this.nodeid = nodeid;
+	}
+
+	/**
+	 * <pre>
+	 * Node Id
+	 * </pre>
+	 */
+	public Integer get_nodeid()
+	{
+		return this.nodeid;
+	}
+
+	/**
+	 * <pre>
+	 * Network 0/1 on VM Instance
+	 * </pre>
+	 */
+	public void set_if_0_1(Boolean if_0_1)
+	{
+		this.if_0_1 = if_0_1;
+	}
+
+	/**
+	 * <pre>
+	 * Network 0/1 on VM Instance
+	 * </pre>
+	 */
+	public Boolean get_if_0_1()
+	{
+		return this.if_0_1;
+	}
+
+	/**
+	 * <pre>
+	 * Node State
+	 * </pre>
+	 */
+	public void set_state(String state)
+	{
+		this.state = state;
+	}
+
+	/**
+	 * <pre>
+	 * Node State
+	 * </pre>
+	 */
+	public String get_state()
+	{
+		return this.state;
+	}
+
+	/**
+	 * <pre>
+	 * NS IP Address for this managed device
+	 * </pre>
+	 */
+	public void set_ns_ip_address(String ns_ip_address)
+	{
+		this.ns_ip_address = ns_ip_address;
+	}
+
+	/**
+	 * <pre>
+	 * NS IP Address for this managed device
+	 * </pre>
+	 */
+	public String get_ns_ip_address()
+	{
+		return this.ns_ip_address;
+	}
+
+	/**
+	 * <pre>
+	 * Password for specified user on NetScaler Instance
+	 * </pre>
+	 */
+	public void set_password(String password)
+	{
+		this.password = password;
+	}
+
+	/**
+	 * <pre>
+	 * Password for specified user on NetScaler Instance
+	 * </pre>
+	 */
+	public String get_password()
+	{
+		return this.password;
+	}
+
+
+	/**
+	 * <pre>
+	 * Master State (Primary/Secondary) of NetScaler Instance
+	 * </pre>
+	 */
+	public String get_ha_master_state()
+	{
+		return this.ha_master_state;
+	}
+
+
+	/**
+	 * <pre>
+	 * Upsince of NetScaler Instance
+	 * </pre>
+	 */
+	public String get_upsince_persisted()
+	{
+		return this.upsince_persisted;
+	}
+
+
+	/**
+	 * <pre>
+	 * HTTP Requests/second on NetScaler Instance
+	 * </pre>
+	 */
+	public Double get_http_req()
+	{
+		return this.http_req;
+	}
+
+
+	/**
+	 * <pre>
+	 * The state of synchronization of NetScaler Instance
+	 * </pre>
+	 */
+	public String get_ha_sync()
+	{
+		return this.ha_sync;
+	}
+
+
+	/**
+	 * <pre>
+	 * Peer IP Address of NetScaler Instance
+	 * </pre>
+	 */
+	public String get_ha_ip_address()
+	{
+		return this.ha_ip_address;
+	}
+
+	/**
+	 * <pre>
+	 * User Name (except nsroot) to be configured on NetScaler Instance
+	 * </pre>
+	 */
+	public void set_username(String username)
+	{
+		this.username = username;
+	}
+
+	/**
+	 * <pre>
+	 * User Name (except nsroot) to be configured on NetScaler Instance
+	 * </pre>
+	 */
+	public String get_username()
+	{
+		return this.username;
+	}
+
+
+	/**
+	 * <pre>
+	 * CPU Usage (%) of NetScaler Instance
+	 * </pre>
+	 */
+	public Double get_ns_cpu_usage()
+	{
+		return this.ns_cpu_usage;
+	}
+
+
+	/**
+	 * <pre>
+	 * Upsince of NetScaler Instance
+	 * </pre>
+	 */
+	public String get_upsince()
+	{
+		return this.upsince;
+	}
+
+
+	/**
+	 * <pre>
+	 * In Throughput of NetScaler Instance in Mbps
+	 * </pre>
+	 */
+	public Double get_ns_rx()
+	{
+		return this.ns_rx;
 	}
 
 
@@ -147,26 +403,6 @@ public class ns extends vm_device
 
 	/**
 	 * <pre>
-	 * Network 0/1 on VM Instance
-	 * </pre>
-	 */
-	public void set_if_0_1(Boolean if_0_1)
-	{
-		this.if_0_1 = if_0_1;
-	}
-
-	/**
-	 * <pre>
-	 * Network 0/1 on VM Instance
-	 * </pre>
-	 */
-	public Boolean get_if_0_1()
-	{
-		return this.if_0_1;
-	}
-
-	/**
-	 * <pre>
 	 * VLAN Type, NS or L2 VLAN
 	 * </pre>
 	 */
@@ -183,26 +419,6 @@ public class ns extends vm_device
 	public Integer get_vlan_type()
 	{
 		return this.vlan_type;
-	}
-
-	/**
-	 * <pre>
-	 * NS IP Address for this managed device
-	 * </pre>
-	 */
-	public void set_ns_ip_address(String ns_ip_address)
-	{
-		this.ns_ip_address = ns_ip_address;
-	}
-
-	/**
-	 * <pre>
-	 * NS IP Address for this managed device
-	 * </pre>
-	 */
-	public String get_ns_ip_address()
-	{
-		return this.ns_ip_address;
 	}
 
 	/**
@@ -247,22 +463,33 @@ public class ns extends vm_device
 
 	/**
 	 * <pre>
-	 * Password for specified user on NetScaler Instance
+	 * Is CCO
 	 * </pre>
 	 */
-	public void set_password(String password)
+	public void set_iscco(Boolean iscco)
 	{
-		this.password = password;
+		this.iscco = iscco;
 	}
 
 	/**
 	 * <pre>
-	 * Password for specified user on NetScaler Instance
+	 * Is CCO
 	 * </pre>
 	 */
-	public String get_password()
+	public Boolean get_iscco()
 	{
-		return this.password;
+		return this.iscco;
+	}
+
+
+	/**
+	 * <pre>
+	 * Memory Usage (%) of NetScaler Instance
+	 * </pre>
+	 */
+	public Double get_ns_memory_usage()
+	{
+		return this.ns_memory_usage;
 	}
 
 	/**
@@ -285,26 +512,24 @@ public class ns extends vm_device
 		return this.nsvlan_tagged;
 	}
 
-
 	/**
 	 * <pre>
-	 * Memory Usage (%) of NetScaler Instance
+	 * Cluster IPAddress
 	 * </pre>
 	 */
-	public Double get_ns_memory_usage()
+	public void set_clip(String clip)
 	{
-		return this.ns_memory_usage;
+		this.clip = clip;
 	}
 
-
 	/**
 	 * <pre>
-	 * Master State (Primary/Secondary) of NetScaler Instance
+	 * Cluster IPAddress
 	 * </pre>
 	 */
-	public String get_ha_master_state()
+	public String get_clip()
 	{
-		return this.ha_master_state;
+		return this.clip;
 	}
 
 
@@ -316,28 +541,6 @@ public class ns extends vm_device
 	public Double get_ns_mgmt_cpu_usage()
 	{
 		return this.ns_mgmt_cpu_usage;
-	}
-
-
-	/**
-	 * <pre>
-	 * Upsince of NetScaler Instance
-	 * </pre>
-	 */
-	public String get_upsince_persisted()
-	{
-		return this.upsince_persisted;
-	}
-
-
-	/**
-	 * <pre>
-	 * HTTP Requests/second on NetScaler Instance
-	 * </pre>
-	 */
-	public Double get_http_req()
-	{
-		return this.http_req;
 	}
 
 	/**
@@ -363,23 +566,12 @@ public class ns extends vm_device
 
 	/**
 	 * <pre>
-	 * The state of synchronization of NetScaler Instance
+	 * Node Health State
 	 * </pre>
 	 */
-	public String get_ha_sync()
+	public String get_health()
 	{
-		return this.ha_sync;
-	}
-
-
-	/**
-	 * <pre>
-	 * Out Throughput of NetScaler Instance in Mbps
-	 * </pre>
-	 */
-	public Double get_ns_tx()
-	{
-		return this.ns_tx;
+		return this.health;
 	}
 
 	/**
@@ -405,32 +597,12 @@ public class ns extends vm_device
 
 	/**
 	 * <pre>
-	 * Peer IP Address of NetScaler Instance
+	 * Out Throughput of NetScaler Instance in Mbps
 	 * </pre>
 	 */
-	public String get_ha_ip_address()
+	public Double get_ns_tx()
 	{
-		return this.ha_ip_address;
-	}
-
-	/**
-	 * <pre>
-	 * User Name (except nsroot) to be configured on NetScaler Instance
-	 * </pre>
-	 */
-	public void set_username(String username)
-	{
-		this.username = username;
-	}
-
-	/**
-	 * <pre>
-	 * User Name (except nsroot) to be configured on NetScaler Instance
-	 * </pre>
-	 */
-	public String get_username()
-	{
-		return this.username;
+		return this.ns_tx;
 	}
 
 
@@ -442,17 +614,6 @@ public class ns extends vm_device
 	public String get_config_progress_status()
 	{
 		return this.config_progress_status;
-	}
-
-
-	/**
-	 * <pre>
-	 * CPU Usage (%) of NetScaler Instance
-	 * </pre>
-	 */
-	public Double get_ns_cpu_usage()
-	{
-		return this.ns_cpu_usage;
 	}
 
 	/**
@@ -473,17 +634,6 @@ public class ns extends vm_device
 	public Integer get_number_of_ssl_cores_up()
 	{
 		return this.number_of_ssl_cores_up;
-	}
-
-
-	/**
-	 * <pre>
-	 * Upsince of NetScaler Instance
-	 * </pre>
-	 */
-	public String get_upsince()
-	{
-		return this.upsince;
 	}
 
 	/**
@@ -963,12 +1113,12 @@ public class ns extends vm_device
 		
 		MPSString username_validator = new MPSString();
 		username_validator.setConstraintCharSetRegEx(MPSConstants.GENERIC_CONSTRAINT,"[ a-zA-Z0-9_#.:@=-]+");
-		username_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
+		username_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 127);
 		username_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		username_validator.validate(operationType, username, "\"username\"");
 		
 		MPSString password_validator = new MPSString();
-		password_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
+		password_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 127);
 		password_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		password_validator.validate(operationType, password, "\"password\"");
 		
@@ -1018,6 +1168,40 @@ public class ns extends vm_device
 		upsince_persisted_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
 		upsince_persisted_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		upsince_persisted_validator.validate(operationType, upsince_persisted, "\"upsince_persisted\"");
+		
+		MPSIPAddress clip_validator = new MPSIPAddress();
+		clip_validator.validate(operationType, clip, "\"clip\"");
+		
+		MPSInt nodeid_validator = new MPSInt();
+		nodeid_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 0);
+		nodeid_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 31);
+		nodeid_validator.validate(operationType, nodeid, "\"nodeid\"");
+		
+		MPSInt clusterid_validator = new MPSInt();
+		clusterid_validator.setConstraintMinValue(MPSConstants.GENERIC_CONSTRAINT, 1);
+		clusterid_validator.setConstraintMaxValue(MPSConstants.GENERIC_CONSTRAINT, 16);
+		clusterid_validator.validate(operationType, clusterid, "\"clusterid\"");
+		
+		MPSBoolean iscco_validator = new MPSBoolean();
+		iscco_validator.validate(operationType, iscco, "\"iscco\"");
+		
+		MPSString backplane_validator = new MPSString();
+		backplane_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 32);
+		backplane_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		backplane_validator.validate(operationType, backplane, "\"backplane\"");
+		
+		MPSString health_validator = new MPSString();
+		health_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 32);
+		health_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		health_validator.validate(operationType, health, "\"health\"");
+		
+		MPSString state_validator = new MPSString();
+		state_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 32);
+		state_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		state_validator.validate(operationType, state, "\"state\"");
+		
+		MPSBoolean if_0_3_validator = new MPSBoolean();
+		if_0_3_validator.validate(operationType, if_0_3, "\"if_0_3\"");
 		
 		MPSString nsvlan_interfaces_validator = new MPSString();
 		nsvlan_interfaces_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 50);

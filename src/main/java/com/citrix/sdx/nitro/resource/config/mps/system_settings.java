@@ -42,6 +42,7 @@ public class system_settings extends base_resource
 {
 	private String svm_ns_comm;
 	private Boolean secure_access_only;
+	private Integer init_status;
 	private Boolean vm_auto_poweron;
 	private String ns_br_interface;
 	private String id;
@@ -99,6 +100,26 @@ public class system_settings extends base_resource
 	public Boolean get_secure_access_only()
 	{
 		return this.secure_access_only;
+	}
+
+	/**
+	 * <pre>
+	 * System initialize status
+	 * </pre>
+	 */
+	public void set_init_status(Integer init_status)
+	{
+		this.init_status = init_status;
+	}
+
+	/**
+	 * <pre>
+	 * System initialize status
+	 * </pre>
+	 */
+	public Integer get_init_status()
+	{
+		return this.init_status;
 	}
 
 	/**
@@ -356,6 +377,9 @@ public class system_settings extends base_resource
 		ns_br_interface_2_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 10);
 		ns_br_interface_2_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		ns_br_interface_2_validator.validate(operationType, ns_br_interface_2, "\"ns_br_interface_2\"");
+		
+		MPSInt init_status_validator = new MPSInt();
+		init_status_validator.validate(operationType, init_status, "\"init_status\"");
 		
 	}
 }

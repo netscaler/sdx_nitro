@@ -461,7 +461,6 @@ public class xen_health_interface extends base_resource
 		mapped_port_validator.validate(operationType, mapped_port, "\"mapped_port\"");
 		
 		MPSIPAddress host_ip_address_validator = new MPSIPAddress();
-		host_ip_address_validator.setConstraintIsReq(MPSConstants.GENERIC_CONSTRAINT, true);
 		host_ip_address_validator.validate(operationType, host_ip_address, "\"host_ip_address\"");
 		
 		MPSString port_validator = new MPSString();

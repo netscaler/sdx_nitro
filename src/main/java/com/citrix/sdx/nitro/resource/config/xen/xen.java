@@ -40,10 +40,12 @@ class xen_responses extends base_response
 
 public class xen extends host_device
 {
+	private String kernel_version;
 	private String version_short;
 	private String expiry;
 	private String supplemental_pack;
 	private String productcode;
+	private String bios_version;
 	private String build_date;
 	private String iscsi_iqn;
 	private String version_long;
@@ -72,6 +74,17 @@ public class xen extends host_device
 
 	/**
 	 * <pre>
+	 * Kernel Version
+	 * </pre>
+	 */
+	public String get_kernel_version()
+	{
+		return this.kernel_version;
+	}
+
+
+	/**
+	 * <pre>
 	 * XenServer Version
 	 * </pre>
 	 */
@@ -94,7 +107,7 @@ public class xen extends host_device
 
 	/**
 	 * <pre>
-	 * Supplimental Pack installed on XenServer
+	 * Supplemental Pack installed on XenServer
 	 * </pre>
 	 */
 	public String get_supplemental_pack()
@@ -111,6 +124,17 @@ public class xen extends host_device
 	public String get_productcode()
 	{
 		return this.productcode;
+	}
+
+
+	/**
+	 * <pre>
+	 * BIOS Version
+	 * </pre>
+	 */
+	public String get_bios_version()
+	{
+		return this.bios_version;
 	}
 
 
@@ -149,7 +173,7 @@ public class xen extends host_device
 
 	/**
 	 * <pre>
-	 * XenServer Biuld Number
+	 * XenServer Build Number
 	 * </pre>
 	 */
 	public String get_build_number()
@@ -492,6 +516,16 @@ public class xen extends host_device
 		supplemental_pack_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 256);
 		supplemental_pack_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		supplemental_pack_validator.validate(operationType, supplemental_pack, "\"supplemental_pack\"");
+		
+		MPSString kernel_version_validator = new MPSString();
+		kernel_version_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 256);
+		kernel_version_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		kernel_version_validator.validate(operationType, kernel_version, "\"kernel_version\"");
+		
+		MPSString bios_version_validator = new MPSString();
+		bios_version_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 256);
+		bios_version_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		bios_version_validator.validate(operationType, bios_version, "\"bios_version\"");
 		
 		MPSDouble wan_out_validator = new MPSDouble();
 		wan_out_validator.validate(operationType, wan_out, "\"wan_out\"");

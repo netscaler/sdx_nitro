@@ -41,10 +41,14 @@ class sdx_license_responses extends base_response
 public class sdx_license extends base_resource
 {
 	private Integer max_number_of_br_instances;
+	private String act_id;
+	private Boolean sync_operation;
 	private Integer available_number_of_ns_instances;
 	private String available_throughput;
 	private String max_throughput;
+	private Integer max_number_of_instances;
 	private String platform;
+	private Integer available_number_of_instances;
 	private Integer max_number_of_ns_instances;
 	private Long __count;
 
@@ -70,6 +74,37 @@ public class sdx_license extends base_resource
 	public Integer get_max_number_of_br_instances()
 	{
 		return this.max_number_of_br_instances;
+	}
+
+
+	/**
+	 * <pre>
+	 * Activity Id
+	 * </pre>
+	 */
+	public String get_act_id()
+	{
+		return this.act_id;
+	}
+
+	/**
+	 * <pre>
+	 * sync operation
+	 * </pre>
+	 */
+	public void set_sync_operation(Boolean sync_operation)
+	{
+		this.sync_operation = sync_operation;
+	}
+
+	/**
+	 * <pre>
+	 * sync operation
+	 * </pre>
+	 */
+	public Boolean get_sync_operation()
+	{
+		return this.sync_operation;
 	}
 
 
@@ -108,12 +143,34 @@ public class sdx_license extends base_resource
 
 	/**
 	 * <pre>
+	 * Maximum Instances
+	 * </pre>
+	 */
+	public Integer get_max_number_of_instances()
+	{
+		return this.max_number_of_instances;
+	}
+
+
+	/**
+	 * <pre>
 	 * Platform
 	 * </pre>
 	 */
 	public String get_platform()
 	{
 		return this.platform;
+	}
+
+
+	/**
+	 * <pre>
+	 * Available Instances
+	 * </pre>
+	 */
+	public Integer get_available_number_of_instances()
+	{
+		return this.available_number_of_instances;
 	}
 
 
@@ -298,6 +355,18 @@ public class sdx_license extends base_resource
 		
 		MPSInt available_number_of_ns_instances_validator = new MPSInt();
 		available_number_of_ns_instances_validator.validate(operationType, available_number_of_ns_instances, "\"available_number_of_ns_instances\"");
+		
+		MPSInt max_number_of_instances_validator = new MPSInt();
+		max_number_of_instances_validator.validate(operationType, max_number_of_instances, "\"max_number_of_instances\"");
+		
+		MPSInt available_number_of_instances_validator = new MPSInt();
+		available_number_of_instances_validator.validate(operationType, available_number_of_instances, "\"available_number_of_instances\"");
+		
+		MPSBoolean sync_operation_validator = new MPSBoolean();
+		sync_operation_validator.validate(operationType, sync_operation, "\"sync_operation\"");
+		
+		MPSString act_id_validator = new MPSString();
+		act_id_validator.validate(operationType, act_id, "\"act_id\"");
 		
 	}
 }

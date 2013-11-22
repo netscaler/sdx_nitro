@@ -56,6 +56,7 @@ public class managed_device extends base_resource
 	private String description;
 	private String type;
 	private String profile_name;
+	private String act_id;
 	private String profile_username;
 	private String profile_password;
 	private Long __count;
@@ -337,6 +338,17 @@ public class managed_device extends base_resource
 	public String get_profile_name()
 	{
 		return this.profile_name;
+	}
+
+
+	/**
+	 * <pre>
+	 * Activity Id
+	 * </pre>
+	 */
+	public String get_act_id()
+	{
+		return this.act_id;
 	}
 
 	/**
@@ -669,6 +681,9 @@ public class managed_device extends base_resource
 		profile_password_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
 		profile_password_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		profile_password_validator.validate(operationType, profile_password, "\"profile_password\"");
+		
+		MPSString act_id_validator = new MPSString();
+		act_id_validator.validate(operationType, act_id, "\"act_id\"");
 		
 	}
 }

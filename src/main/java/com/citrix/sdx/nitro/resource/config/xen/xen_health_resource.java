@@ -342,7 +342,6 @@ public class xen_health_resource extends base_resource
 		name_validator.validate(operationType, name, "\"name\"");
 		
 		MPSIPAddress host_ip_address_validator = new MPSIPAddress();
-		host_ip_address_validator.setConstraintIsReq(MPSConstants.GENERIC_CONSTRAINT, true);
 		host_ip_address_validator.validate(operationType, host_ip_address, "\"host_ip_address\"");
 		
 		MPSString current_value_validator = new MPSString();

@@ -41,6 +41,8 @@ class techsupport_responses extends base_response
 public class techsupport extends base_resource
 {
 	private Integer file_size;
+	private String[] vpx_list_for_techsupport;
+	private String act_id;
 	private String file_name;
 	private String mode;
 	private String file_last_modified;
@@ -72,6 +74,37 @@ public class techsupport extends base_resource
 
 	/**
 	 * <pre>
+	 * List of VPX for which the techsupport is required
+	 * </pre>
+	 */
+	public void set_vpx_list_for_techsupport(String[] vpx_list_for_techsupport)
+	{
+		this.vpx_list_for_techsupport = vpx_list_for_techsupport;
+	}
+
+	/**
+	 * <pre>
+	 * List of VPX for which the techsupport is required
+	 * </pre>
+	 */
+	public String[] get_vpx_list_for_techsupport()
+	{
+		return this.vpx_list_for_techsupport;
+	}
+
+
+	/**
+	 * <pre>
+	 * Activity Id
+	 * </pre>
+	 */
+	public String get_act_id()
+	{
+		return this.act_id;
+	}
+
+	/**
+	 * <pre>
 	 * Technical support File Name
 	 * </pre>
 	 */
@@ -92,7 +125,7 @@ public class techsupport extends base_resource
 
 	/**
 	 * <pre>
-	 * Technical support Mode, Possible values Appliance | XenServer | Management Service
+	 * Technical support Mode, Possible values Appliance | XenServer | Management Service | NetScaler Insight | Appliance_full | Instances
 	 * </pre>
 	 */
 	public void set_mode(String mode)
@@ -102,7 +135,7 @@ public class techsupport extends base_resource
 
 	/**
 	 * <pre>
-	 * Technical support Mode, Possible values Appliance | XenServer | Management Service
+	 * Technical support Mode, Possible values Appliance | XenServer | Management Service | NetScaler Insight | Appliance_full | Instances
 	 * </pre>
 	 */
 	public String get_mode()
@@ -341,6 +374,20 @@ public class techsupport extends base_resource
 		
 		MPSInt file_size_validator = new MPSInt();
 		file_size_validator.validate(operationType, file_size, "\"file_size\"");
+		
+		MPSString act_id_validator = new MPSString();
+		act_id_validator.validate(operationType, act_id, "\"act_id\"");
+		
+		MPSString vpx_list_for_techsupport_validator = new MPSString();
+		vpx_list_for_techsupport_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 50);
+		vpx_list_for_techsupport_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		if(vpx_list_for_techsupport != null)
+		{
+			for(int i=0; i<vpx_list_for_techsupport.length; i++)
+			{
+				vpx_list_for_techsupport_validator.validate(operationType, vpx_list_for_techsupport[i], "vpx_list_for_techsupport["+i+"]");
+			}
+		}
 		
 	}
 }

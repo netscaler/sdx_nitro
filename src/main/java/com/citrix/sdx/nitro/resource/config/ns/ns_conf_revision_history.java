@@ -54,7 +54,7 @@ public class ns_conf_revision_history extends base_resource
 	 */
 	protected String get_object_id()
 	{
-		return null;
+		return ns_ip_address;
 	}
 
 
@@ -100,6 +100,21 @@ public class ns_conf_revision_history extends base_resource
 		resource.validate("get");
 		return (ns_conf_revision_history[]) resource.get_resources(client);
 	}
+
+	/**
+	 * Use this operation to get ns.conf file revision history.
+	 */
+	public static ns_conf_revision_history[] get(nitro_service client, ns_conf_revision_history resource) throws Exception
+	{
+		resource.validate("get");
+		return ((ns_conf_revision_history[]) resource.get_resources(client));
+	}
+
+	/**
+	 * <pre>
+	 * Use this operation to get ns.conf file revision history in bulk.
+	 * </pre>
+	 */
 
 	/**
 	* Use this API to fetch filtered set of ns_conf_revision_history resources.

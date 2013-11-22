@@ -48,6 +48,7 @@ public class ns_vserver_appflow_config extends base_resource
 	private String ns_ip_address;
 	private String ip_address;
 	private String type;
+	private String icalog;
 	private String servicetype;
 	private Long __count;
 
@@ -217,6 +218,26 @@ public class ns_vserver_appflow_config extends base_resource
 
 	/**
 	 * <pre>
+	 * ICA log
+	 * </pre>
+	 */
+	public void set_icalog(String icalog)
+	{
+		this.icalog = icalog;
+	}
+
+	/**
+	 * <pre>
+	 * ICA log
+	 * </pre>
+	 */
+	public String get_icalog()
+	{
+		return this.icalog;
+	}
+
+	/**
+	 * <pre>
 	 * servicetype
 	 * </pre>
 	 */
@@ -238,18 +259,18 @@ public class ns_vserver_appflow_config extends base_resource
 
 	/**
 	 * <pre>
-	 * modify virtual server.
+	 * Add virtual server policy.
 	 * </pre>
 	 */
 	public static ns_vserver_appflow_config add(nitro_service client, ns_vserver_appflow_config resource) throws Exception
 	{
 		resource.validate("add");
-		return ((ns_vserver_appflow_config[]) resource.update_resource(client))[0];
+		return ((ns_vserver_appflow_config[]) resource.perform_operation(client, "add"))[0];
 	}
 
 	/**
 	 * <pre>
-	 * modify virtual server in bulk.
+	 * Add virtual server policy in bulk.
 	 * </pre>
 	 */
 	public static ns_vserver_appflow_config[] add(nitro_service client, ns_vserver_appflow_config[] resources) throws Exception
@@ -263,9 +284,41 @@ public class ns_vserver_appflow_config extends base_resource
 		}
 		
 		if(resources.length == 1)
-			return ((ns_vserver_appflow_config[]) resources[0].update_resource(client));
+			return ((ns_vserver_appflow_config[]) resources[0].perform_operation(client, "add"));
 		
-		return ((ns_vserver_appflow_config[]) update_bulk_request(client, resources));
+		return ((ns_vserver_appflow_config[]) perform_operation_bulk_request(client, resources, "add"));
+	}
+
+	/**
+	 * <pre>
+	 * delete virtual server policy.
+	 * </pre>
+	 */
+	public static ns_vserver_appflow_config delete(nitro_service client, ns_vserver_appflow_config resource) throws Exception
+	{
+		resource.validate("delete");
+		return ((ns_vserver_appflow_config[]) resource.delete_resource(client))[0];
+	}
+
+	/**
+	 * <pre>
+	 * delete virtual server policy in bulk.
+	 * </pre>
+	 */
+	public static ns_vserver_appflow_config[] delete(nitro_service client, ns_vserver_appflow_config[] resources) throws Exception
+	{
+		if(resources == null)
+			throw new Exception("Null resource array");
+		
+		for(int i = 0; i < resources.length; i++)
+		{
+			resources[i].validate("delete");
+		}
+		
+		if(resources.length == 1)
+			return ((ns_vserver_appflow_config[]) resources[0].delete_resource(client));
+		
+		return ((ns_vserver_appflow_config[]) delete_bulk_request(client, resources));
 	}
 
 	/**
@@ -278,6 +331,38 @@ public class ns_vserver_appflow_config extends base_resource
 		ns_vserver_appflow_config resource = new ns_vserver_appflow_config();
 		resource.validate("get");
 		return (ns_vserver_appflow_config[]) resource.get_resources(client);
+	}
+
+	/**
+	 * <pre>
+	 * modify virtual server policy.
+	 * </pre>
+	 */
+	public static ns_vserver_appflow_config modify(nitro_service client, ns_vserver_appflow_config resource) throws Exception
+	{
+		resource.validate("modify");
+		return ((ns_vserver_appflow_config[]) resource.update_resource(client))[0];
+	}
+
+	/**
+	 * <pre>
+	 * modify virtual server policy in bulk.
+	 * </pre>
+	 */
+	public static ns_vserver_appflow_config[] modify(nitro_service client, ns_vserver_appflow_config[] resources) throws Exception
+	{
+		if(resources == null)
+			throw new Exception("Null resource array");
+		
+		for(int i = 0; i < resources.length; i++)
+		{
+			resources[i].validate("modify");
+		}
+		
+		if(resources.length == 1)
+			return ((ns_vserver_appflow_config[]) resources[0].update_resource(client));
+		
+		return ((ns_vserver_appflow_config[]) update_bulk_request(client, resources));
 	}
 
 	/**
@@ -439,6 +524,9 @@ public class ns_vserver_appflow_config extends base_resource
 		
 		MPSString servicetype_validator = new MPSString();
 		servicetype_validator.validate(operationType, servicetype, "\"servicetype\"");
+		
+		MPSString icalog_validator = new MPSString();
+		icalog_validator.validate(operationType, icalog, "\"icalog\"");
 		
 	}
 }

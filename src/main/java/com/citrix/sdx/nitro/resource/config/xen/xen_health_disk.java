@@ -426,7 +426,6 @@ public class xen_health_disk extends base_resource
 		name_validator.validate(operationType, name, "\"name\"");
 		
 		MPSIPAddress host_ip_address_validator = new MPSIPAddress();
-		host_ip_address_validator.setConstraintIsReq(MPSConstants.GENERIC_CONSTRAINT, true);
 		host_ip_address_validator.validate(operationType, host_ip_address, "\"host_ip_address\"");
 		
 		MPSDouble transaction_rate_validator = new MPSDouble();

@@ -79,6 +79,7 @@ public class mps_upgrade extends base_resource
 
 	/**
 	 * <pre>
+	 * This property is no longer used
 	 * Documentation File Name
 	 * </pre>
 	 */
@@ -89,6 +90,7 @@ public class mps_upgrade extends base_resource
 
 	/**
 	 * <pre>
+	 * This property is no longer used
 	 * Documentation File Name
 	 * </pre>
 	 */

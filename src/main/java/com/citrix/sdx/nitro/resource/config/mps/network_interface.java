@@ -40,20 +40,24 @@ class network_interface_responses extends base_response
 
 public class network_interface extends base_resource
 {
-	private String port_name;
+	private String device_channel_name;
 	private Boolean is_mgmt_ifc;
 	private String name_server;
 	private String vrid_list_ipv6;
 	private String gateway;
-	private Integer vlan;
-	private String managed_device_id;
-	private Boolean receiveuntagged;
 	private String vrid_list_ipv4;
 	private Boolean is_member_ifc;
+	private String mac_address;
 	private Boolean l2_enabled;
 	private String ip_address;
 	private String netmask;
 	private Integer vf_index;
+	private String port_name;
+	private String mac_mode;
+	private String managed_device_id;
+	private Integer vlan;
+	private Boolean receiveuntagged;
+	private String vlan_whitelist;
 	private String[] vrid_list_ipv4_array;
 	private String[] vrid_list_ipv6_array;
 	private String[] vlan_whitelist_array;
@@ -73,24 +77,15 @@ public class network_interface extends base_resource
 		return null;
 	}
 
-	/**
-	 * <pre>
-	 * Port name of the interface on the host machine
-	 * </pre>
-	 */
-	public void set_port_name(String port_name)
-	{
-		this.port_name = port_name;
-	}
 
 	/**
 	 * <pre>
-	 * Port name of the interface on the host machine
+	 * LA Name on the actual VM
 	 * </pre>
 	 */
-	public String get_port_name()
+	public String get_device_channel_name()
 	{
-		return this.port_name;
+		return this.device_channel_name;
 	}
 
 	/**
@@ -175,66 +170,6 @@ public class network_interface extends base_resource
 
 	/**
 	 * <pre>
-	 * VLAN Id
-	 * </pre>
-	 */
-	public void set_vlan(Integer vlan)
-	{
-		this.vlan = vlan;
-	}
-
-	/**
-	 * <pre>
-	 * VLAN Id
-	 * </pre>
-	 */
-	public Integer get_vlan()
-	{
-		return this.vlan;
-	}
-
-	/**
-	 * <pre>
-	 * managed_device_id
-	 * </pre>
-	 */
-	public void set_managed_device_id(String managed_device_id)
-	{
-		this.managed_device_id = managed_device_id;
-	}
-
-	/**
-	 * <pre>
-	 * managed_device_id
-	 * </pre>
-	 */
-	public String get_managed_device_id()
-	{
-		return this.managed_device_id;
-	}
-
-	/**
-	 * <pre>
-	 * Receive Untagged Packets on Interface/Channel
-	 * </pre>
-	 */
-	public void set_receiveuntagged(Boolean receiveuntagged)
-	{
-		this.receiveuntagged = receiveuntagged;
-	}
-
-	/**
-	 * <pre>
-	 * Receive Untagged Packets on Interface/Channel
-	 * </pre>
-	 */
-	public Boolean get_receiveuntagged()
-	{
-		return this.receiveuntagged;
-	}
-
-	/**
-	 * <pre>
 	 * VRID List for Interface/Channel for IPV4 VMAC Generation
 	 * </pre>
 	 */
@@ -271,6 +206,26 @@ public class network_interface extends base_resource
 	public Boolean get_is_member_ifc()
 	{
 		return this.is_member_ifc;
+	}
+
+	/**
+	 * <pre>
+	 * Mac Address
+	 * </pre>
+	 */
+	public void set_mac_address(String mac_address)
+	{
+		this.mac_address = mac_address;
+	}
+
+	/**
+	 * <pre>
+	 * Mac Address
+	 * </pre>
+	 */
+	public String get_mac_address()
+	{
+		return this.mac_address;
 	}
 
 	/**
@@ -351,6 +306,126 @@ public class network_interface extends base_resource
 	public Integer get_vf_index()
 	{
 		return this.vf_index;
+	}
+
+	/**
+	 * <pre>
+	 * Port name of the interface on the host machine
+	 * </pre>
+	 */
+	public void set_port_name(String port_name)
+	{
+		this.port_name = port_name;
+	}
+
+	/**
+	 * <pre>
+	 * Port name of the interface on the host machine
+	 * </pre>
+	 */
+	public String get_port_name()
+	{
+		return this.port_name;
+	}
+
+	/**
+	 * <pre>
+	 * Mac Mode, default for XenServer generated, generated for SVM generated, custom for User assigned
+	 * </pre>
+	 */
+	public void set_mac_mode(String mac_mode)
+	{
+		this.mac_mode = mac_mode;
+	}
+
+	/**
+	 * <pre>
+	 * Mac Mode, default for XenServer generated, generated for SVM generated, custom for User assigned
+	 * </pre>
+	 */
+	public String get_mac_mode()
+	{
+		return this.mac_mode;
+	}
+
+	/**
+	 * <pre>
+	 * managed_device_id
+	 * </pre>
+	 */
+	public void set_managed_device_id(String managed_device_id)
+	{
+		this.managed_device_id = managed_device_id;
+	}
+
+	/**
+	 * <pre>
+	 * managed_device_id
+	 * </pre>
+	 */
+	public String get_managed_device_id()
+	{
+		return this.managed_device_id;
+	}
+
+	/**
+	 * <pre>
+	 * VLAN Id
+	 * </pre>
+	 */
+	public void set_vlan(Integer vlan)
+	{
+		this.vlan = vlan;
+	}
+
+	/**
+	 * <pre>
+	 * VLAN Id
+	 * </pre>
+	 */
+	public Integer get_vlan()
+	{
+		return this.vlan;
+	}
+
+	/**
+	 * <pre>
+	 * Receive Untagged Packets on Interface/Channel
+	 * </pre>
+	 */
+	public void set_receiveuntagged(Boolean receiveuntagged)
+	{
+		this.receiveuntagged = receiveuntagged;
+	}
+
+	/**
+	 * <pre>
+	 * Receive Untagged Packets on Interface/Channel
+	 * </pre>
+	 */
+	public Boolean get_receiveuntagged()
+	{
+		return this.receiveuntagged;
+	}
+
+	/**
+	 * <pre>
+	 * VLAN Whitelist for Interface/Channel on VM Instance
+	 * </pre>
+	 */
+	public void set_vlan_whitelist(String vlan_whitelist)
+	{
+		this.vlan_whitelist = vlan_whitelist;
+	}
+
+	/**
+	 * <pre>
+	 * VLAN Whitelist for Interface/Channel on VM Instance
+	 * </pre>
+	 */
+	public String get_vlan_whitelist()
+	{
+		return this.vlan_whitelist;
 	}
 
 	/**
@@ -520,8 +595,23 @@ public class network_interface extends base_resource
 		name_server_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		name_server_validator.validate(operationType, name_server, "\"name_server\"");
 		
+		MPSString mac_address_validator = new MPSString();
+		mac_address_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 32);
+		mac_address_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		mac_address_validator.validate(operationType, mac_address, "\"mac_address\"");
+		
 		MPSBoolean is_mgmt_ifc_validator = new MPSBoolean();
 		is_mgmt_ifc_validator.validate(operationType, is_mgmt_ifc, "\"is_mgmt_ifc\"");
+		
+		MPSString mac_mode_validator = new MPSString();
+		mac_mode_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 255);
+		mac_mode_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		mac_mode_validator.validate(operationType, mac_mode, "\"mac_mode\"");
+		
+		MPSString device_channel_name_validator = new MPSString();
+		device_channel_name_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 32);
+		device_channel_name_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		device_channel_name_validator.validate(operationType, device_channel_name, "\"device_channel_name\"");
 		
 		MPSBoolean is_member_ifc_validator = new MPSBoolean();
 		is_member_ifc_validator.validate(operationType, is_member_ifc, "\"is_member_ifc\"");
@@ -531,6 +621,9 @@ public class network_interface extends base_resource
 		
 		MPSString vrid_list_ipv4_validator = new MPSString();
 		vrid_list_ipv4_validator.validate(operationType, vrid_list_ipv4, "\"vrid_list_ipv4\"");
+		
+		MPSString vlan_whitelist_validator = new MPSString();
+		vlan_whitelist_validator.validate(operationType, vlan_whitelist, "\"vlan_whitelist\"");
 		
 		MPSBoolean receiveuntagged_validator = new MPSBoolean();
 		receiveuntagged_validator.validate(operationType, receiveuntagged, "\"receiveuntagged\"");

@@ -349,13 +349,11 @@ public class sdx_network_config extends base_resource
 		svm_ip_address_validator.setConstraintIsReq(MPSConstants.MODIFY_CONSTRAINT, true);
 		svm_ip_address_validator.validate(operationType, svm_ip_address, "\"svm_ip_address\"");
 		
-		MPSString dns_validator = new MPSString();
-		dns_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 64);
-		dns_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		MPSIPAddress dns_validator = new MPSIPAddress();
 		dns_validator.validate(operationType, dns, "\"dns\"");
 		
 		MPSString network_interface_validator = new MPSString();
-		network_interface_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 10);
+		network_interface_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 15);
 		network_interface_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		network_interface_validator.setConstraintIsReq(MPSConstants.MODIFY_CONSTRAINT, true);
 		network_interface_validator.validate(operationType, network_interface, "\"network_interface\"");

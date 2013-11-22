@@ -39,6 +39,7 @@ class xen_health_sr_responses extends base_response
 
 public class xen_health_sr extends base_resource
 {
+	private String act_id;
 	private String status;
 	private String bay_number;
 	private String host_ip_address;
@@ -58,6 +59,17 @@ public class xen_health_sr extends base_resource
 	protected String get_object_id()
 	{
 		return bay_number;
+	}
+
+
+	/**
+	 * <pre>
+	 * Activity Id
+	 * </pre>
+	 */
+	public String get_act_id()
+	{
+		return this.act_id;
 	}
 
 	/**
@@ -354,8 +366,10 @@ public class xen_health_sr extends base_resource
 		status_validator.validate(operationType, status, "\"status\"");
 		
 		MPSIPAddress host_ip_address_validator = new MPSIPAddress();
-		host_ip_address_validator.setConstraintIsReq(MPSConstants.GENERIC_CONSTRAINT, true);
 		host_ip_address_validator.validate(operationType, host_ip_address, "\"host_ip_address\"");
+		
+		MPSString act_id_validator = new MPSString();
+		act_id_validator.validate(operationType, act_id, "\"act_id\"");
 		
 	}
 }

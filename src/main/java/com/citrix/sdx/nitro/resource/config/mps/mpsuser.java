@@ -406,6 +406,7 @@ public class mpsuser extends base_resource
 		name_validator.validate(operationType, name, "\"name\"");
 		
 		MPSString password_validator = new MPSString();
+		password_validator.setConstraintCharSetRegEx(MPSConstants.GENERIC_CONSTRAINT,"[^:]+");
 		password_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
 		password_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		password_validator.setConstraintIsReq(MPSConstants.ADD_CONSTRAINT, true);

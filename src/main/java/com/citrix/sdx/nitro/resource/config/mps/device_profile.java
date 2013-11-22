@@ -616,13 +616,13 @@ public class device_profile extends base_resource
 		
 		MPSString username_validator = new MPSString();
 		username_validator.setConstraintCharSetRegEx(MPSConstants.GENERIC_CONSTRAINT,"[ a-zA-Z0-9_#.:@=-]+");
-		username_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
+		username_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 127);
 		username_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		username_validator.setConstraintIsReq(MPSConstants.ADD_CONSTRAINT, true);
 		username_validator.validate(operationType, username, "\"username\"");
 		
 		MPSString password_validator = new MPSString();
-		password_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 128);
+		password_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 127);
 		password_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
 		password_validator.setConstraintIsReq(MPSConstants.ADD_CONSTRAINT, true);
 		password_validator.validate(operationType, password, "\"password\"");

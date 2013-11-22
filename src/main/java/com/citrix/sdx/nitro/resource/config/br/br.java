@@ -22,7 +22,10 @@ import com.citrix.sdx.nitro.service.nitro_service;
 import com.citrix.sdx.nitro.service.options;
 import com.citrix.sdx.nitro.exception.nitro_exception;
 import com.citrix.sdx.nitro.util.filtervalue;
+
 import com.citrix.sdx.nitro.resource.config.mps.*;
+
+import java.util.*;
 
 class br_response extends base_response
 {
@@ -43,6 +46,7 @@ public class br extends vm_device
 	private String connected_plugins;
 	private String bandwidth_mode;
 	private String ha_peer_ip_address;
+	private String mgmt_ip_address;
 	private Double wan_out_prev;
 	private String ha_peer_state;
 	private String havmip;
@@ -63,6 +67,7 @@ public class br extends vm_device
 	private String unacl_connections;
 	private Double prev_poll_time;
 	private Double system_load;
+	private String license;
 	private String apa_ip_address;
 	private String apa_netmask;
 	private String apa_gateway;
@@ -117,6 +122,26 @@ public class br extends vm_device
 	public String get_ha_peer_ip_address()
 	{
 		return this.ha_peer_ip_address;
+	}
+
+	/**
+	 * <pre>
+	 * Management IP Address for this Repeater
+	 * </pre>
+	 */
+	public void set_mgmt_ip_address(String mgmt_ip_address)
+	{
+		this.mgmt_ip_address = mgmt_ip_address;
+	}
+
+	/**
+	 * <pre>
+	 * Management IP Address for this Repeater
+	 * </pre>
+	 */
+	public String get_mgmt_ip_address()
+	{
+		return this.mgmt_ip_address;
 	}
 
 
@@ -346,6 +371,17 @@ public class br extends vm_device
 	public Double get_system_load()
 	{
 		return this.system_load;
+	}
+
+
+	/**
+	 * <pre>
+	 * Repeater License
+	 * </pre>
+	 */
+	public String get_license()
+	{
+		return this.license;
 	}
 
 	/**
@@ -981,6 +1017,14 @@ public class br extends vm_device
 		
 		MPSDouble active_connections_validator = new MPSDouble();
 		active_connections_validator.validate(operationType, active_connections, "\"active_connections\"");
+		
+		MPSIPAddress mgmt_ip_address_validator = new MPSIPAddress();
+		mgmt_ip_address_validator.validate(operationType, mgmt_ip_address, "\"mgmt_ip_address\"");
+		
+		MPSString license_validator = new MPSString();
+		license_validator.setConstraintMaxStrLen(MPSConstants.GENERIC_CONSTRAINT, 64);
+		license_validator.setConstraintMinStrLen(MPSConstants.GENERIC_CONSTRAINT, 1);
+		license_validator.validate(operationType, license, "\"license\"");
 		
 	}
 }

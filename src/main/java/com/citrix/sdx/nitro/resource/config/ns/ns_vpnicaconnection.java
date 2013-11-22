@@ -24,30 +24,30 @@ import com.citrix.sdx.nitro.exception.nitro_exception;
 import com.citrix.sdx.nitro.util.filtervalue;
 
 
-class ns_ns_feature_response extends base_response
+class ns_vpnicaconnection_response extends base_response
 {
-	public ns_ns_feature[] ns_ns_feature;
+	public ns_vpnicaconnection[] ns_vpnicaconnection;
 }
 
-class ns_ns_feature_responses extends base_response
+class ns_vpnicaconnection_responses extends base_response
 {
-	public ns_ns_feature_response[] ns_ns_feature_response_array;
+	public ns_vpnicaconnection_response[] ns_vpnicaconnection_response_array;
 }
 
 /**
- * Configuration for NS feature resource
+ * Configuration for ns vpn ica connection on NetScaler resource
  */
 
-public class ns_ns_feature extends base_resource
+public class ns_vpnicaconnection extends base_resource
 {
-	private Boolean appflow;
-	private Boolean htmlinjection;
+	private String id;
 	private String ns_ip_address;
+	private Integer ica_license_in_use;
 	private Long __count;
 
 	protected String get_object_type()
 	{
-		return "ns_ns_feature";
+		return "ns_vpnicaconnection";
 	}
 
 	/**
@@ -60,42 +60,22 @@ public class ns_ns_feature extends base_resource
 
 	/**
 	 * <pre>
-	 * true, if appflow feature is enabled
+	 * Id is NetScaler IP
 	 * </pre>
 	 */
-	public void set_appflow(Boolean appflow)
+	public void set_id(String id)
 	{
-		this.appflow = appflow;
+		this.id = id;
 	}
 
 	/**
 	 * <pre>
-	 * true, if appflow feature is enabled
+	 * Id is NetScaler IP
 	 * </pre>
 	 */
-	public Boolean get_appflow()
+	public String get_id()
 	{
-		return this.appflow;
-	}
-
-	/**
-	 * <pre>
-	 * true, if htmlinjection feature is enabled
-	 * </pre>
-	 */
-	public void set_htmlinjection(Boolean htmlinjection)
-	{
-		this.htmlinjection = htmlinjection;
-	}
-
-	/**
-	 * <pre>
-	 * true, if htmlinjection feature is enabled
-	 * </pre>
-	 */
-	public Boolean get_htmlinjection()
-	{
-		return this.htmlinjection;
+		return this.id;
 	}
 
 	/**
@@ -118,74 +98,106 @@ public class ns_ns_feature extends base_resource
 		return this.ns_ip_address;
 	}
 
+	/**
+	 * <pre>
+	 * ica_license_in_use
+	 * </pre>
+	 */
+	public void set_ica_license_in_use(Integer ica_license_in_use)
+	{
+		this.ica_license_in_use = ica_license_in_use;
+	}
 
 	/**
-	* Use this API to fetch filtered set of ns_ns_feature resources.
+	 * <pre>
+	 * ica_license_in_use
+	 * </pre>
+	 */
+	public Integer get_ica_license_in_use()
+	{
+		return this.ica_license_in_use;
+	}
+
+
+	/**
+	 * <pre>
+	 * Get ns vpnicaconnection information from NS Instance(s).
+	 * </pre>
+	 */
+	public static ns_vpnicaconnection[] get(nitro_service client) throws Exception
+	{
+		ns_vpnicaconnection resource = new ns_vpnicaconnection();
+		resource.validate("get");
+		return (ns_vpnicaconnection[]) resource.get_resources(client);
+	}
+
+	/**
+	* Use this API to fetch filtered set of ns_vpnicaconnection resources.
 	* filter string should be in JSON format.eg: "vm_state:DOWN,name:[a-z]+"
 	*/
-	public static ns_ns_feature[] get_filtered(nitro_service service, String filter) throws Exception
+	public static ns_vpnicaconnection[] get_filtered(nitro_service service, String filter) throws Exception
 	{
-		ns_ns_feature obj = new ns_ns_feature();
+		ns_vpnicaconnection obj = new ns_vpnicaconnection();
 		options option = new options();
 		option.set_filter(filter);
-		ns_ns_feature[] response = (ns_ns_feature[]) obj.getfiltered(service, option);
+		ns_vpnicaconnection[] response = (ns_vpnicaconnection[]) obj.getfiltered(service, option);
 		return response;
 	}
 
 	/**
-	* Use this API to fetch filtered set of ns_ns_feature resources.
+	* Use this API to fetch filtered set of ns_vpnicaconnection resources.
 	* set the filter parameter values in filtervalue object.
 	*/
-	public static ns_ns_feature[] get_filtered(nitro_service service, filtervalue[] filter) throws Exception
+	public static ns_vpnicaconnection[] get_filtered(nitro_service service, filtervalue[] filter) throws Exception
 	{
-		ns_ns_feature obj = new ns_ns_feature();
+		ns_vpnicaconnection obj = new ns_vpnicaconnection();
 		options option = new options();
 		option.set_filter(filter);
-		ns_ns_feature[] response = (ns_ns_feature[]) obj.getfiltered(service, option);
+		ns_vpnicaconnection[] response = (ns_vpnicaconnection[]) obj.getfiltered(service, option);
 		return response;
 	}
 
 	/**
-	* Use this API to count the ns_ns_feature resources configured on NetScaler SDX.
+	* Use this API to count the ns_vpnicaconnection resources configured on NetScaler SDX.
 	*/
 	public static long count(nitro_service service) throws Exception
 	{
-		ns_ns_feature obj = new ns_ns_feature();
+		ns_vpnicaconnection obj = new ns_vpnicaconnection();
 		options option = new options();
 		option.set_count(true);
-		ns_ns_feature[] response = (ns_ns_feature[])obj.get_resources(service, option);
+		ns_vpnicaconnection[] response = (ns_vpnicaconnection[])obj.get_resources(service, option);
 		if (response != null && response.length > 0)
 			return response[0].__count;
 		return 0;
 	}
 
 	/**
-	* Use this API to count the filtered set of ns_ns_feature resources.
+	* Use this API to count the filtered set of ns_vpnicaconnection resources.
 	* filter string should be in JSON format.eg: "vm_state:DOWN,name:[a-z]+"
 	*/
 	public static long count_filtered(nitro_service service, String filter) throws Exception
 	{
-		ns_ns_feature obj = new ns_ns_feature();
+		ns_vpnicaconnection obj = new ns_vpnicaconnection();
 		options option = new options();
 		option.set_count(true);
 		option.set_filter(filter);
-		ns_ns_feature[] response = (ns_ns_feature[])obj.get_resources(service, option);
+		ns_vpnicaconnection[] response = (ns_vpnicaconnection[])obj.get_resources(service, option);
 		if (response != null && response.length > 0)
 			return response[0].__count;
 		return 0;
 	}
 
 	/**
-	* Use this API to count the filtered set of ns_ns_feature resources.
+	* Use this API to count the filtered set of ns_vpnicaconnection resources.
 	* set the filter parameter values in filtervalue object.
 	*/
 	public static long count_filtered(nitro_service service, filtervalue[] filter) throws Exception
 	{
-		ns_ns_feature obj = new ns_ns_feature();
+		ns_vpnicaconnection obj = new ns_vpnicaconnection();
 		options option = new options();
 		option.set_count(true);
 		option.set_filter(filter);
-		ns_ns_feature[] response = (ns_ns_feature[])obj.get_resources(service, option);
+		ns_vpnicaconnection[] response = (ns_vpnicaconnection[])obj.get_resources(service, option);
 		if (response != null && response.length > 0)
 			return response[0].__count;
 		return 0;
@@ -198,7 +210,7 @@ public class ns_ns_feature extends base_resource
 	 */
 	protected base_resource[] get_nitro_response(nitro_service service, String response) throws Exception
 	{
-		ns_ns_feature_response result = (ns_ns_feature_response) service.get_payload_formatter().string_to_resource(ns_ns_feature_response.class, response);
+		ns_vpnicaconnection_response result = (ns_vpnicaconnection_response) service.get_payload_formatter().string_to_resource(ns_vpnicaconnection_response.class, response);
 		if(result.errorcode != 0)
 		{
 			if (result.errorcode == SESSION_NOT_EXISTS)
@@ -213,7 +225,7 @@ public class ns_ns_feature extends base_resource
 				throw new nitro_exception(result.message, result.errorcode);
 			}
 		}
-		return result.ns_ns_feature;
+		return result.ns_vpnicaconnection;
 	}
 
 	/**
@@ -223,21 +235,21 @@ public class ns_ns_feature extends base_resource
 	 */
 	protected base_resource[] get_nitro_bulk_response(nitro_service service, String response) throws Exception
 	{
-		ns_ns_feature_responses result = (ns_ns_feature_responses) service.get_payload_formatter().string_to_resource(ns_ns_feature_responses.class, response);
+		ns_vpnicaconnection_responses result = (ns_vpnicaconnection_responses) service.get_payload_formatter().string_to_resource(ns_vpnicaconnection_responses.class, response);
 		if(result.errorcode != 0)
 		{
 			if (result.errorcode == SESSION_NOT_EXISTS)
 				service.clear_session();
-			throw new nitro_exception(result.message, result.errorcode, (base_response [])result.ns_ns_feature_response_array);
+			throw new nitro_exception(result.message, result.errorcode, (base_response [])result.ns_vpnicaconnection_response_array);
 		}
-		ns_ns_feature[] result_ns_ns_feature = new ns_ns_feature[result.ns_ns_feature_response_array.length];
+		ns_vpnicaconnection[] result_ns_vpnicaconnection = new ns_vpnicaconnection[result.ns_vpnicaconnection_response_array.length];
 		
-		for(int i = 0; i < result.ns_ns_feature_response_array.length; i++)
+		for(int i = 0; i < result.ns_vpnicaconnection_response_array.length; i++)
 		{
-			result_ns_ns_feature[i] = result.ns_ns_feature_response_array[i].ns_ns_feature[0];
+			result_ns_vpnicaconnection[i] = result.ns_vpnicaconnection_response_array[i].ns_vpnicaconnection[0];
 		}
 		
-		return result_ns_ns_feature;
+		return result_ns_vpnicaconnection;
 	}
 
 	/**
@@ -249,14 +261,14 @@ public class ns_ns_feature extends base_resource
 	{
 		super.validate(operationType);
 
+		MPSString id_validator = new MPSString();
+		id_validator.validate(operationType, id, "\"id\"");
+		
+		MPSInt ica_license_in_use_validator = new MPSInt();
+		ica_license_in_use_validator.validate(operationType, ica_license_in_use, "\"ica_license_in_use\"");
+		
 		MPSIPAddress ns_ip_address_validator = new MPSIPAddress();
 		ns_ip_address_validator.validate(operationType, ns_ip_address, "\"ns_ip_address\"");
-		
-		MPSBoolean appflow_validator = new MPSBoolean();
-		appflow_validator.validate(operationType, appflow, "\"appflow\"");
-		
-		MPSBoolean htmlinjection_validator = new MPSBoolean();
-		htmlinjection_validator.validate(operationType, htmlinjection, "\"htmlinjection\"");
 		
 	}
 }

@@ -41,6 +41,7 @@ class inventory_responses extends base_response
 public class inventory extends base_resource
 {
 	private String device_ipaddress;
+	private String act_id;
 	private String inventory_status;
 	private Long __count;
 
@@ -75,6 +76,17 @@ public class inventory extends base_resource
 	public String get_device_ipaddress()
 	{
 		return this.device_ipaddress;
+	}
+
+
+	/**
+	 * <pre>
+	 * Activity Id
+	 * </pre>
+	 */
+	public String get_act_id()
+	{
+		return this.act_id;
 	}
 
 
@@ -228,6 +240,9 @@ public class inventory extends base_resource
 	{
 		super.validate(operationType);
 
+		MPSString act_id_validator = new MPSString();
+		act_id_validator.validate(operationType, act_id, "\"act_id\"");
+		
 		MPSIPAddress device_ipaddress_validator = new MPSIPAddress();
 		device_ipaddress_validator.validate(operationType, device_ipaddress, "\"device_ipaddress\"");
 		

@@ -52,7 +52,7 @@ public class br_vm_template extends vm_template
 	 */
 	protected String get_object_id()
 	{
-		return null;
+		return super.get_object_id();
 	}
 
 

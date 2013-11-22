@@ -40,19 +40,23 @@ class mps_responses extends base_response
 
 public class mps extends base_resource
 {
+	private String build_number_short;
 	private Integer current_time;
-	private String serial;
 	private String sysid;
+	private String hostname;
 	private String bios_version;
 	private String hostid;
 	private String product_version;
-	private String username;
-	private String host;
-	private String build_number;
-	private String current_time_formatted;
 	private String uptime;
-	private String product;
+	private String current_user_permission;
 	private String platform;
+	private String product_build_number;
+	private String serial;
+	private String host;
+	private String username;
+	private String current_time_formatted;
+	private String build_number;
+	private String product;
 	private Long __count;
 
 	protected String get_object_type()
@@ -66,6 +70,17 @@ public class mps extends base_resource
 	protected String get_object_id()
 	{
 		return null;
+	}
+
+
+	/**
+	 * <pre>
+	 * Build Number without Date
+	 * </pre>
+	 */
+	public String get_build_number_short()
+	{
+		return this.build_number_short;
 	}
 
 
@@ -85,20 +100,20 @@ public class mps extends base_resource
 	 * Serial Number
 	 * </pre>
 	 */
-	public String get_serial()
+	public String get_sysid()
 	{
-		return this.serial;
+		return this.sysid;
 	}
 
 
 	/**
 	 * <pre>
-	 * Serial Number
+	 * Host name on which system is running
 	 * </pre>
 	 */
-	public String get_sysid()
+	public String get_hostname()
 	{
-		return this.sysid;
+		return this.hostname;
 	}
 
 
@@ -137,12 +152,56 @@ public class mps extends base_resource
 
 	/**
 	 * <pre>
-	 * User Name who is currently connected to the system
+	 * Uptime
 	 * </pre>
 	 */
-	public String get_username()
+	public String get_uptime()
 	{
-		return this.username;
+		return this.uptime;
+	}
+
+
+	/**
+	 * <pre>
+	 * This property will show the permission type for current user
+	 * </pre>
+	 */
+	public String get_current_user_permission()
+	{
+		return this.current_user_permission;
+	}
+
+
+	/**
+	 * <pre>
+	 * Platform
+	 * </pre>
+	 */
+	public String get_platform()
+	{
+		return this.platform;
+	}
+
+
+	/**
+	 * <pre>
+	 * Product Build Number
+	 * </pre>
+	 */
+	public String get_product_build_number()
+	{
+		return this.product_build_number;
+	}
+
+
+	/**
+	 * <pre>
+	 * Serial Number
+	 * </pre>
+	 */
+	public String get_serial()
+	{
+		return this.serial;
 	}
 
 
@@ -159,12 +218,12 @@ public class mps extends base_resource
 
 	/**
 	 * <pre>
-	 * Build Number
+	 * User Name who is currently connected to the system
 	 * </pre>
 	 */
-	public String get_build_number()
+	public String get_username()
 	{
-		return this.build_number;
+		return this.username;
 	}
 
 
@@ -181,12 +240,12 @@ public class mps extends base_resource
 
 	/**
 	 * <pre>
-	 * Uptime
+	 * Build Number
 	 * </pre>
 	 */
-	public String get_uptime()
+	public String get_build_number()
 	{
-		return this.uptime;
+		return this.build_number;
 	}
 
 
@@ -198,17 +257,6 @@ public class mps extends base_resource
 	public String get_product()
 	{
 		return this.product;
-	}
-
-
-	/**
-	 * <pre>
-	 * Platform
-	 * </pre>
-	 */
-	public String get_platform()
-	{
-		return this.platform;
 	}
 
 
@@ -400,6 +448,18 @@ public class mps extends base_resource
 		
 		MPSString product_version_validator = new MPSString();
 		product_version_validator.validate(operationType, product_version, "\"product_version\"");
+		
+		MPSString hostname_validator = new MPSString();
+		hostname_validator.validate(operationType, hostname, "\"hostname\"");
+		
+		MPSString product_build_number_validator = new MPSString();
+		product_build_number_validator.validate(operationType, product_build_number, "\"product_build_number\"");
+		
+		MPSString build_number_short_validator = new MPSString();
+		build_number_short_validator.validate(operationType, build_number_short, "\"build_number_short\"");
+		
+		MPSString current_user_permission_validator = new MPSString();
+		current_user_permission_validator.validate(operationType, current_user_permission, "\"current_user_permission\"");
 		
 	}
 }
